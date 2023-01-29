@@ -87,16 +87,16 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteParkingLot(int parkingLotId) {
-        ParkingLot parkingLot;
-        try {
-            parkingLot = parkingLotRepository1.findById(parkingLotId).get();
-        }catch (Exception e){
-            System.out.println("No Parking Lot!");
-            return;
-        }
-        for(Spot spot : parkingLot.getSpotList()){
-            spotRepository1.deleteById(spot.getId());
-        }
+//        ParkingLot parkingLot;
+//        try {
+//            parkingLot = parkingLotRepository1.findById(parkingLotId).get();
+//        }catch (Exception e){
+//            System.out.println("No Parking Lot!");
+//            return;
+//        }
+//        for(Spot spot : parkingLot.getSpotList()){
+//            spotRepository1.deleteById(spot.getId());
+//        }
         parkingLotRepository1.deleteById(parkingLotId);
     }
 }

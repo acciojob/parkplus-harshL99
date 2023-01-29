@@ -20,16 +20,16 @@ public class UserServiceImpl implements UserService {
     ReservationRepository reservationRepository4;
     @Override
     public void deleteUser(Integer userId) {
-        User user;
-        try {
-            user = userRepository4.findById(userId).get();
-        }catch (Exception e){
-            System.out.println("User does not exists!");
-            return;
-        }
-        for(Reservation reservation : user.getReservationList()){
-            reservationRepository4.deleteById(reservation.getId());
-        }
+//        User user;
+//        try {
+//            user = userRepository4.findById(userId).get();
+//        }catch (Exception e){
+//            System.out.println("User does not exists!");
+//            return;
+//        }
+//        for(Reservation reservation : user.getReservationList()){
+//            reservationRepository4.deleteById(reservation.getId());
+//        }
         userRepository4.deleteById(userId);
     }
 
