@@ -43,7 +43,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteSpot(int spotId) {
-        Spot spot=spotRepository1.findById(spotId).get();
+        Spot spot;
+        try {
+             spot = spotRepository1.findById(spotId).get();
+        }catch (Exception e){
+            System.out.println("No Such Element exists!");
+            return;
+        }
         ParkingLot parkingLot=spot.getParkingLot();
         parkingLot.getSpotList().remove(spot);
         spotRepository1.deleteById(spotId);
