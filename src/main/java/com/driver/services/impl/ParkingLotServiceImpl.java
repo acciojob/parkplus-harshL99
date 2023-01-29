@@ -58,7 +58,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public Spot updateSpot(int parkingLotId, int spotId, int pricePerHour) {
-        Spot spot=spotRepository1.findById(spotId).get();
+        Spot spot;
+        try {
+            spot = spotRepository1.findById(spotId).get();
+        }catch (Exception e){
+            System.out.println("No Such Element exists!");
+            return null;
+        }
         spot.setPricePerHour(pricePerHour);
         ParkingLot parkingLot=spot.getParkingLot();
 

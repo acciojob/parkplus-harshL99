@@ -28,7 +28,7 @@ public class PaymentServiceImpl implements PaymentService {
 
                   Payment payment=new Payment();
                   payment.setPaymentCompleted(true);
-                  payment.setPaymentMode(PaymentMode.valueOf(mode));//String to Enum...
+                  payment.setPaymentMode(PaymentMode.valueOf(mode.toUpperCase()));//String to Enum...
                   payment.setReservation(reservation);
 
                   reservation.setPayment(payment);
