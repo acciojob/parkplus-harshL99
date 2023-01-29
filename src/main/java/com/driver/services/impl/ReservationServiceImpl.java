@@ -41,7 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
        hm.put(SpotType.OTHERS,100);
 
        for(int i=0;i<spots.size();i++){
-           if(!spots.get(i).isOccupied() && spots.get(i).getPricePerHour()<minPrice && hm.get(spots.get(i).getSpotType())<=numberOfWheels){
+           if(!spots.get(i).getOccupied() && spots.get(i).getPricePerHour()<minPrice && hm.get(spots.get(i).getSpotType())<=numberOfWheels){
                minPrice=spots.get(i).getPricePerHour();
                idx=i;
            }
