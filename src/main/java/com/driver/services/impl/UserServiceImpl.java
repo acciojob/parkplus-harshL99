@@ -28,9 +28,9 @@ public class UserServiceImpl implements UserService {
             return;
         }
         for(Reservation reservation : user.getReservationList()){
-            reservationRepository4.delete(reservation);
+            reservationRepository4.deleteById(reservation.getId());
         }
-        userRepository4.delete(user);
+        userRepository4.deleteById(userId);
     }
 
     @Override

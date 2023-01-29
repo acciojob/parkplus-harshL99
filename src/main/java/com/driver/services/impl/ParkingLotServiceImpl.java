@@ -63,7 +63,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             spot = spotRepository1.findById(spotId).get();
         }catch (Exception e){
             System.out.println("No Such Element exists!");
-            return null;
+            return new Spot();
         }
         spot.setPricePerHour(pricePerHour);
         ParkingLot parkingLot=spot.getParkingLot();
@@ -87,8 +87,13 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 
     @Override
     public void deleteParkingLot(int parkingLotId) {
-        ParkingLot parkingLot=parkingLotRepository1.findById(parkingLotId).get();
-
+        ParkingLot parkingLot;
+        try {
+            parkingLot = parkingLotRepository1.findById(parkingLotId).get();
+        }catch (Exception e){
+            System.out.println("No Parking Lot!");
+            return;
+        }
         for(Spot spot : parkingLot.getSpotList()){
             spotRepository1.delete(spot);
         }
